@@ -1,41 +1,61 @@
+using Microsoft.EntityFrameworkCore;
+using app.Server.Data;
+using app.Server.Models;
 
 namespace app.Server
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+		public class Program
+		{
+				public static void Main(string[] args)
+				{
+						var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+						// Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+						builder.Services.AddControllers();
+						builder.Services.AddAuthorization();
+						builder.Services.AddDbContext<ApplicationDbContext>(options =>{
+								options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+						});
 
-            var app = builder.Build();
+						builder.Services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<ApplicationDbContext>();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+						builder.Services.AddIdentityCore<User>(options => {
+								options.SignIn.RequireConfirmedAccount = true;
+								options.Password.RequireDigit = true;
+								options.Password.RequireNonAlphanumeric = true;
+								options.Password.RequireUppercase = true;
+								options.Password.RequiredLength = 6;
+								options.Password.RequiredUniqueChars = 0;
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+								options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+								options.Lockout.MaxFailedAccessAttempts = 5;
+								options.Lockout.AllowedForNewUsers = true;
 
-            app.UseHttpsRedirection();
+								// User settings.
+								options.User.AllowedUserNameCharacters =
+								"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+								options.User.RequireUniqueEmail = true;
 
-            app.UseAuthorization();
+						}).AddEntityFrameworkStores<ApplicationDbContext>();
 
+						var app = builder.Build();
 
-            app.MapControllers();
+						app.UseDefaultFiles();
+						app.UseStaticFiles();
 
-            app.MapFallbackToFile("/index.html");
+						// Configure the HTTP request pipeline.
 
-            app.Run();
-        }
-    }
+						app.UseHttpsRedirection();
+
+						app.UseAuthorization();
+						app.MapIdentityApi<User>();
+
+						app.MapControllers();
+
+						app.MapFallbackToFile("/index.html");
+
+						app.Run();
+				}
+		}
 }
