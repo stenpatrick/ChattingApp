@@ -5,12 +5,14 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Register from './components/Register';
+import Landing from './components/Landing'; 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/'>
+            <Route path='/' element={<Landing />} /> 
             <Route element={<ProtectedRoutes />}>
-                <Route path='/' element={<Home />} />
+                <Route path='/home' element={<Home />} />
                 <Route path='/admin' element={<Admin />} />
             </Route>
             <Route path='/login' element={<Login />} />
@@ -28,6 +30,7 @@ const router = createBrowserRouter(
         </Route>
     )
 );
+
 function App() {
     const isLogged = localStorage.getItem("user");
     const logout = async () => {
@@ -53,7 +56,7 @@ function App() {
                 {
                     isLogged ?
                         <span className='item-holder'>
-                            <a href="/">Home</a>
+                            <a href="/home">Home</a>
                             <a href="/admin">Admin</a>
                             <span onClick={logout}>Log Out</span>
                         </span> :
