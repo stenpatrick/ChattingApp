@@ -1,0 +1,126 @@
+/* src/components/Start.css */
+
+body {
+    font-family: 'Arial', sans-serif; /* Modern font */
+    margin: 0; /* Remove default margin */
+    background-color: #f0f4f8; /* Soft background color */
+    color: #333; /* Dark text color */
+}
+
+
+.home {
+    position: relative; /* Set position to relative */
+    text-align: center; /* Center text */
+    height: 100vh; /* Full viewport height */
+    background-image: url('../assets/1.png'); /* Set the background image */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    filter: brightness(0.7); /* Darken the background for better text readability */
+}
+
+/* Other styles remain unchanged */
+
+.home-header {
+    position: relative; /* Set position to relative to stack above the image */
+    z-index: 1; /* Ensure content is above the hero image */
+    padding-top: 150px; /* Add padding to lower the text */
+}
+
+    .home-header h1 {
+        font-size: 3em; /* Large heading */
+        margin-bottom: 10px;
+        color: #ffffff; /* White text for contrast */
+    }
+
+    .home-header p {
+        font-size: 1.25em; /* Larger paragraph text */
+        margin-bottom: 30px;
+        line-height: 1.6; /* Improved line spacing */
+        color: #ffffff; /* White text for contrast */
+    }
+
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
+.button {
+    padding: 15px 30px; /* Button size */
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    font-size: 1em; /* Consistent font size */
+}
+
+    .button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        transform: translateY(-2px); /* Lift effect on hover */
+    }
+
+.features {
+    margin: 40px 0; /* Space above and below features section */
+}
+
+    .features h2 {
+        font-size: 2.5em; /* Heading size for features */
+        margin-bottom: 20px;
+        color: #333; /* Dark color for contrast */
+    }
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between feature cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.feature-card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 250px; /* Fixed width for cards */
+    text-align: left; /* Left align text */
+}
+
+    .feature-card h3 {
+        font-size: 1.5em; /* Heading size for features */
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 1em; /* Paragraph text size */
+        line-height: 1.4; /* Line spacing */
+    }
+
+.home-footer {
+    margin-top: 40px; /* Space above footer */
+    padding: 20px 0;
+    font-size: 0.9em; /* Smaller footer text */
+    color: #666; /* Lighter color for footer */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-header h1 {
+        font-size: 2.5em; /* Responsive heading size */
+    }
+
+    .home-header p {
+        font-size: 1em; /* Responsive paragraph text */
+    }
+
+    .feature-cards {
+        flex-direction: column; /* Stack cards on smaller screens */
+        align-items: center; /* Center cards */
+    }
+
+    .feature-card {
+        width: 90%; /* Full width on smaller screens */
+        margin-bottom: 20px; /* Space below cards */
+    }
+}

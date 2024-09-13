@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Register from './components/Register';
-import Landing from './components/Landing'; 
+import Landing from './components/Start'; 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
