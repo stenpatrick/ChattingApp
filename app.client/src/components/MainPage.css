@@ -158,10 +158,12 @@ nav ul {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
+    display: flow;
     justify-content: center;
     align-items: center;
+}
+.hackbold {
+    font-weight: bold;
 }
 
 /* Responsive Design Adjustments */

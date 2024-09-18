@@ -8,6 +8,7 @@ function MainPage() {
     const [balance, setBalance] = useState(0);
     const [transactions, setTransactions] = useState([]);
     const [data, setData] = useState([]);
+    const [totalExpenses, setTotalExpenses] = useState(0); // State to hold total expenses
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
@@ -34,7 +35,14 @@ function MainPage() {
     };
 
     const calculateData = (transactions) => {
-        const categoryTotals = transactions.reduce((acc, transaction) => {
+        // Filter out only negative transactions (expenses)
+        const expenses = transactions.filter(transaction => transaction.amount < 0);
+
+        // Calculate total expenses
+        const total = expenses.reduce((accumulatedTotal, transaction) => accumulatedTotal + Math.abs(transaction.amount), 0);
+        setTotalExpenses(total); // Set total expenses state
+
+        const categoryTotals = expenses.reduce((acc, transaction) => {
             acc[transaction.type] = (acc[transaction.type] || 0) + Math.abs(transaction.amount);
             return acc;
         }, {});
@@ -108,8 +116,11 @@ function MainPage() {
                             ))}
                         </ul>
                     </div>
+
                     <div className="chart-container">
                         <h2>Transaction Breakdown</h2>
+                        
+                        <p><span className="hackbold">Expenses</span> -{totalExpenses.toFixed(2)} USD</p>
                         <PieChart width={300} height={300}>
                             <Pie
                                 data={data}
