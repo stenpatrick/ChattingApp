@@ -8,28 +8,26 @@ function MainPage() {
     const [balance, setBalance] = useState(0);
     const [transactions, setTransactions] = useState([]);
     const [data, setData] = useState([]);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
-        // Simulate fetching balance and transactions
         fetchBalance();
         fetchTransactions();
     }, []);
 
     const fetchBalance = () => {
-        // Replace this with your actual API call
         setBalance(1200.50); // Example balance
     };
 
     const fetchTransactions = () => {
-        // Replace this with your actual API call
         const fetchedTransactions = [
-            { id: 1, type: 'Shopping', amount: -350, date: '2024-09-01T14:30:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 2, type: 'Food', amount: -50, date: '2024-09-02T12:00:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 3, type: 'Transport', amount: -30, date: '2024-09-03T09:00:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 4, type: 'Salary', amount: 1000, date: '2024-09-04T15:00:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 5, type: 'Utilities', amount: -100, date: '2024-09-05T08:00:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 6, type: 'Food', amount: -70, date: '2024-09-06T18:00:00Z', icon: 'https://via.placeholder.com/40' },
-            { id: 7, type: 'Transport', amount: -50, date: '2024-09-07T07:30:00Z', icon: 'https://via.placeholder.com/40' },
+            { id: 1, type: 'Shopping', amount: -350, date: '2024-09-01T14:30:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 2, type: 'Food', amount: -50, date: '2024-09-02T12:00:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 3, type: 'Transport', amount: -30, date: '2024-09-03T09:00:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 4, type: 'Salary', amount: 1000, date: '2024-09-04T15:00:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 5, type: 'Utilities', amount: -100, date: '2024-09-05T08:00:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 6, type: 'Food', amount: -70, date: '2024-09-06T18:00:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
+            { id: 7, type: 'Transport', amount: -50, date: '2024-09-07T07:30:00Z', icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' },
         ];
         setTransactions(fetchedTransactions);
         calculateData(fetchedTransactions);
@@ -50,15 +48,35 @@ function MainPage() {
     };
 
     return (
-        <div className="main-page">
-            <aside className="sidebar">
-                <div className="logo">SavingsApp</div>
+        <div className={`main-page ${sidebarOpen ? '' : 'sidebar-collapsed'}`}>
+            <aside className={`sidebar ${sidebarOpen ? 'opened' : ''}`}>
+                <div className="logo">Savings App</div>
                 <nav>
                     <ul>
-                        <li>Dashboard</li>
-                        <li>Transactions</li>
-                        <li>Settings</li>
-                        <li>Logout</li>
+                        <li onClick={() => setSidebarOpen(!sidebarOpen)}>
+                            <div className="icon-background">
+                                <span>🏠</span> {/* Placeholder for an actual icon */}
+                            </div>
+                            {sidebarOpen && "Dashboard"}
+                        </li>
+                        <li>
+                            <div className="icon-background">
+                                <span>📊</span>
+                            </div>
+                            {sidebarOpen && "Transactions"}
+                        </li>
+                        <li>
+                            <div className="icon-background">
+                                <span>⚙️</span>
+                            </div>
+                            {sidebarOpen && "Settings"}
+                        </li>
+                        <li>
+                            <div className="icon-background">
+                                <span>🚪</span>
+                            </div>
+                            {sidebarOpen && "Logout"}
+                        </li>
                     </ul>
                 </nav>
             </aside>
@@ -76,7 +94,9 @@ function MainPage() {
                         <ul className="transaction-list">
                             {transactions.map(transaction => (
                                 <li key={transaction.id}>
-                                    <img src={transaction.icon} alt={transaction.type} className="transaction-icon" />
+                                    <div className="icon-background">
+                                        <img src={transaction.icon} alt={transaction.type} className="transaction-icon" />
+                                    </div>
                                     <div className="transaction-details">
                                         <span className="transaction-type">{transaction.type}</span>
                                         <span className="transaction-date">{new Date(transaction.date).toLocaleString()}</span>
@@ -96,7 +116,7 @@ function MainPage() {
                                 cx={150}
                                 cy={150}
                                 labelLine={false}
-                                outerRadius={130}
+                                outerRadius={100}
                                 fill="#8884d8"
                                 dataKey="value"
                             >

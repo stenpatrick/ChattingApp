@@ -13,10 +13,15 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 250px;
+    width: 250px; /* Width of the sidebar when opened */
     background-color: #ffffff; /* White background for sidebar */
-    padding: 20px;
+    padding-top: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s; /* Smooth transition for width change */
+}
+
+.sidebar-collapsed .sidebar {
+    width: 80px; /* Width of the sidebar when collapsed */
 }
 
 .logo {
@@ -32,14 +37,28 @@ nav ul {
 }
 
     nav ul li {
-        margin-bottom: 15px;
-        font-size: 18px; /* Slightly larger font size for readability */
-        cursor: pointer; /* Pointer cursor on hover */
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
     }
 
+        /* Change color on hover */
         nav ul li:hover {
-            color: #4CAF50; /* Change color on hover */
+            background-color: #f5f5f5; /* Light gray on hover */
         }
+
+/* Icon Background Circle */
+.icon-background {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #eaeaea; /* Light gray circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
 
 /* Content Styles */
 .content {
@@ -51,12 +70,15 @@ nav ul {
     color: #333;
 }
 
+/* Balance Container Styles */
 .balance-container {
-    background-color: #ffffff; /* White background for balance section */
-    border-radius: 8px; /* Rounded corners */
+    background-color: #ffffff;
+    border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px; /* Space below balance section */
+    margin-bottom: 20px;
+    max-width: 380px;
+    width: auto;
 }
 
 .balance {
@@ -79,31 +101,27 @@ nav ul {
     border-radius: 8px;
     padding: 10px; /* Reduced padding for compactness */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    max-width: 400px; /* Set a maximum width for the transaction history box */
-    width: auto; /* Allow it to shrink based on content */
+    max-width: 400px;
+    width: auto;
 }
 
 .transaction-list {
     list-style-type: none;
-    padding-left: 0;
 }
 
     .transaction-list li {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        margin-left: -30px;
         padding: 8px; /* Reduced padding for compactness */
-        border-bottom: 1px solid #ddd; /* Light border between transactions */
     }
 
-        .transaction-list li:last-child {
-            border-bottom: none; /* Remove border from last item */
-        }
 
 .transaction-icon {
     width: 30px; /* Width of the transaction icon - reduced size */
     height: 30px; /* Height of the transaction icon - reduced size */
-    margin-right: 10px; /* Space between icon and text */
+    margin-right: 0px; /* Space between icon and text */
 }
 
 /* Transaction Details Styles */
@@ -137,20 +155,31 @@ nav ul {
 
 /* Chart Container Styles */
 .chart-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width :768px) {
     .main-page {
         flex-direction: column; /* Stack sidebar and content on smaller screens */
+        height: auto;
+        overflow: auto;
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        right: -10%;
+        bottom: -10%;
+        z-index: -1;
     }
 
     .sidebar {
-        width: auto; /* Full width sidebar on mobile */
+        width: auto;
         height: auto;
         position: absolute;
     }
