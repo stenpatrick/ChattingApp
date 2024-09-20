@@ -175,6 +175,11 @@ nav ul {
     font-weight: bold;
 }
 
+.category-list {
+    list-style-type: none; /* Remove default list styling */
+    padding-left: 0; /* Remove left padding */
+}
+
 /* Responsive Design Adjustments */
 @media (max-width :768px) {
     .main-page {
@@ -237,4 +242,3 @@ nav ul {
     .input-container button:hover {
         background-color: #45a049; /* button hover */
     }
-

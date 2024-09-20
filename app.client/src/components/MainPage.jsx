@@ -117,7 +117,7 @@ function MainPage() {
                     <div className="balance">${balance.toFixed(2)}</div>
                 </div>
 
-                {/* Section for Adding Amount */}
+                {/* New Section for Adding Amount */}
                 <div className="add-balance-container">
                     <h2>Transfer Money</h2>
                     <div className="input-container">
@@ -157,7 +157,9 @@ function MainPage() {
                     {/* Pie Chart for Transaction Breakdown */}
                     <div className="chart-container">
                         <h2>Transaction Breakdown</h2>
-                        <p><span className="hackbold">Expenses</span> -${totalExpenses.toFixed(2)} USD</p>
+                        <p><span className="hackbold">Total Expenses</span> -${totalExpenses.toFixed(2)} USD</p>
+
+                        {/* Pie Chart */}
                         <PieChart width={300} height={300}>
                             <Pie
                                 data={data}
@@ -174,7 +176,18 @@ function MainPage() {
                             </Pie>
                             <Tooltip />
                         </PieChart>
+
+                        {/* List of Categories and Amounts */}
+                        <ul className="category-list">
+                            {data.map((entry) => (
+                                <li key={entry.name}>
+                                    {entry.name}: ${entry.value.toFixed(2)}
+                                </li>
+                            ))}
+                        </ul>
+
                     </div>
+
                 </div>
 
             </main>
