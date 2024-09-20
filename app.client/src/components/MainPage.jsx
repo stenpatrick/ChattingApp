@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, Tooltip } from 'recharts'; // Ensure recharts is installed
-import './MainPage.css'; // Importing CSS for styling
+import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import './MainPage.css';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF5733'];
 
@@ -8,8 +8,9 @@ function MainPage() {
     const [balance, setBalance] = useState(0);
     const [transactions, setTransactions] = useState([]);
     const [data, setData] = useState([]);
-    const [totalExpenses, setTotalExpenses] = useState(0); // State to hold total expenses
+    const [totalExpenses, setTotalExpenses] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [inputAmount, setInputAmount] = useState(''); // State for input amount
 
     useEffect(() => {
         fetchBalance();
@@ -35,12 +36,9 @@ function MainPage() {
     };
 
     const calculateData = (transactions) => {
-        // Filter out only negative transactions (expenses)
         const expenses = transactions.filter(transaction => transaction.amount < 0);
-
-        // Calculate total expenses
         const total = expenses.reduce((accumulatedTotal, transaction) => accumulatedTotal + Math.abs(transaction.amount), 0);
-        setTotalExpenses(total); // Set total expenses state
+        setTotalExpenses(total);
 
         const categoryTotals = expenses.reduce((acc, transaction) => {
             acc[transaction.type] = (acc[transaction.type] || 0) + Math.abs(transaction.amount);
@@ -55,15 +53,35 @@ function MainPage() {
         setData(chartData);
     };
 
+    const handleInputChange = (event) => {
+        setInputAmount(event.target.value); // Update input amount
+    };
+
+    const handleAddToBalance = () => {
+        const amount = parseFloat(inputAmount);
+        if (!isNaN(amount) && amount > 0) {
+            setBalance(prevBalance => prevBalance + amount); // Update balance
+            setTransactions(prevTransactions => [
+                ...prevTransactions,
+                { id: prevTransactions.length + 1, type: 'Deposit', amount: amount, date: new Date().toISOString(), icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' }
+            ]);
+            setInputAmount(''); // Clear input field
+        } else {
+            alert("Please enter a valid positive number.");
+        }
+    };
+
     return (
         <div className={`main-page ${sidebarOpen ? '' : 'sidebar-collapsed'}`}>
             <aside className={`sidebar ${sidebarOpen ? 'opened' : ''}`}>
-                <div className="logo">Savings App</div>
                 <nav>
                     <ul>
                         <li onClick={() => setSidebarOpen(!sidebarOpen)}>
+                            <img className="hero-image" width="70px" src="https://ahhdaily.com/assets/images/shops/order-groceries-from-lidl.webp" alt="Logo" />
+                        </li>
+                        <li>
                             <div className="icon-background">
-                                <span>🏠</span> {/* Placeholder for an actual icon */}
+                                <span>🏠</span>
                             </div>
                             {sidebarOpen && "Dashboard"}
                         </li>
@@ -92,10 +110,29 @@ function MainPage() {
                 <header className="header">
                     <h1>Your Savings Overview</h1>
                 </header>
+
+                {/* Balance Display */}
                 <div className="balance-container">
                     <h2>Your Balance</h2>
                     <div className="balance">${balance.toFixed(2)}</div>
                 </div>
+
+                {/* Section for Adding Amount */}
+                <div className="add-balance-container">
+                    <h2>Transfer Money</h2>
+                    <div className="input-container">
+                        <input
+                            type="number"
+                            value={inputAmount}
+                            onChange={handleInputChange}
+                            placeholder="Enter amount"
+                            min="0"
+                        />
+                        <button onClick={handleAddToBalance}>Add</button>
+                    </div>
+                </div>
+
+                {/* Transaction History and Chart */}
                 <div className="overview-container">
                     <div className="transactions-container">
                         <h2>Transaction History</h2>
@@ -117,10 +154,10 @@ function MainPage() {
                         </ul>
                     </div>
 
+                    {/* Pie Chart for Transaction Breakdown */}
                     <div className="chart-container">
                         <h2>Transaction Breakdown</h2>
-                        
-                        <p><span className="hackbold">Expenses</span> -{totalExpenses.toFixed(2)} USD</p>
+                        <p><span className="hackbold">Expenses</span> -${totalExpenses.toFixed(2)} USD</p>
                         <PieChart width={300} height={300}>
                             <Pie
                                 data={data}
@@ -139,6 +176,7 @@ function MainPage() {
                         </PieChart>
                     </div>
                 </div>
+
             </main>
         </div>
     );
