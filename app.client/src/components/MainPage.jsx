@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import './MainPage.css';
+import Sidebar from './Sidebar';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF5733'];
 
@@ -10,7 +11,7 @@ function MainPage() {
     const [data, setData] = useState([]);
     const [totalExpenses, setTotalExpenses] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(true);
-    const [inputAmount, setInputAmount] = useState(''); // State for input amount
+    const [inputAmount, setInputAmount] = useState('');
 
     useEffect(() => {
         fetchBalance();
@@ -54,18 +55,18 @@ function MainPage() {
     };
 
     const handleInputChange = (event) => {
-        setInputAmount(event.target.value); // Update input amount
+        setInputAmount(event.target.value);
     };
 
     const handleAddToBalance = () => {
         const amount = parseFloat(inputAmount);
         if (!isNaN(amount) && amount > 0) {
-            setBalance(prevBalance => prevBalance + amount); // Update balance
+            setBalance(prevBalance => prevBalance + amount);
             setTransactions(prevTransactions => [
                 ...prevTransactions,
                 { id: prevTransactions.length + 1, type: 'Deposit', amount: amount, date: new Date().toISOString(), icon: 'https://cdn-icons-png.flaticon.com/512/493/493389.png' }
             ]);
-            setInputAmount(''); // Clear input field
+            setInputAmount('');
         } else {
             alert("Please enter a valid positive number.");
         }
@@ -73,39 +74,8 @@ function MainPage() {
 
     return (
         <div className={`main-page ${sidebarOpen ? '' : 'sidebar-collapsed'}`}>
-            <aside className={`sidebar ${sidebarOpen ? 'opened' : ''}`}>
-                <nav>
-                    <ul>
-                        <li onClick={() => setSidebarOpen(!sidebarOpen)}>
-                            <img className="hero-image" width="70px" src="https://ahhdaily.com/assets/images/shops/order-groceries-from-lidl.webp" alt="Logo" />
-                        </li>
-                        <li>
-                            <div className="icon-background">
-                                <span>🏠</span>
-                            </div>
-                            {sidebarOpen && "Dashboard"}
-                        </li>
-                        <li>
-                            <div className="icon-background">
-                                <span>📊</span>
-                            </div>
-                            {sidebarOpen && "Transactions"}
-                        </li>
-                        <li>
-                            <div className="icon-background">
-                                <span>⚙️</span>
-                            </div>
-                            {sidebarOpen && "Settings"}
-                        </li>
-                        <li>
-                            <div className="icon-background">
-                                <span>🚪</span>
-                            </div>
-                            {sidebarOpen && "Logout"}
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
+            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
             <main className="content">
                 <header className="header">
                     <h1>Your Savings Overview</h1>
@@ -187,9 +157,7 @@ function MainPage() {
                         </ul>
 
                     </div>
-
                 </div>
-
             </main>
         </div>
     );
