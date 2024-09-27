@@ -1,0 +1,240 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Light background for a clean look */
+    color: #333; /* Dark text for contrast */
+}
+
+.main-page {
+    display: flex;
+    height: 100vh; /* Full height to utilize space */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px; /* Width of the sidebar when opened */
+    background-color: #ffffff; /* White background for sidebar */
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for size and margin */
+}
+
+.sidebar-collapsed .sidebar {
+    width: 80px; /* Width of the sidebar when collapsed */
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+    nav ul li {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        /* Change color on hover */
+        nav ul li:hover {
+            background-color: #f5f5f5; /* Light gray on hover */
+        }
+
+/* Icon Background Circle */
+.icon-background {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #eaeaea; /* Light gray circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.sidebar ul li {
+    transition: opacity 0.3s ease; /* Smooth fade for text */
+}
+
+.hero-image {
+    margin-left: 70px;
+    width: 70px; /* Default size when sidebar is open */
+    transition: width 0.35s ease, margin-left 0.35s ease; /* Smooth transition for size and margin */
+}
+
+.sidebar-collapsed .hero-image {
+    width: 50px; /* Match the size of the .icon-background when sidebar is collapsed */
+    height: 50px;
+    margin-left: 0; /* Remove extra margin when collapsed */
+}
+
+/* Content Styles */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.header h1 {
+    color: #333;
+}
+
+/* Balance Container Styles */
+.balance-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-width: 380px;
+    width: auto;
+}
+
+.balance {
+    font-size: 36px;
+    color: #4CAF50; /* Green color for balance */
+}
+
+/* Overview Container Styles */
+.overview-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Transaction History Styles */
+.transactions-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px; /* Reduced padding for compactness */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: auto;
+}
+
+.transaction-list {
+    list-style-type: none;
+}
+
+    .transaction-list li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: -30px;
+        padding: 8px; /* Reduced padding for compactness */
+    }
+
+
+.transaction-icon {
+    width: 30px; /* Width of the transaction icon - reduced size */
+    height: 30px; /* Height of the transaction icon - reduced size */
+    margin-right: 0px; /* Space between icon and text */
+}
+
+/* Transaction Details Styles */
+.transaction-details {
+    flex-grow: 1; /* Allow this to take remaining space */
+}
+
+.transaction-type {
+    font-weight: bold;
+}
+
+.transaction-date {
+    display: block;
+    font-size: 12px; /* Smaller font size for date */
+    color: #666; /* Gray color for date text */
+}
+
+/* Amount Styles */
+.amount {
+    margin-left: auto; /* Push amount to the right */
+    font-weight: bold;
+}
+
+.income {
+    color: #4CAF50; /* Green for income amounts */
+}
+
+.expense {
+    color: #FF5733; /* Red for expense amounts */
+}
+
+/* Chart Container Styles */
+.chart-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    display: flow;
+    justify-content: center;
+    align-items: center;
+}
+
+.hackbold {
+    font-weight: bold;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width :768px) {
+    .main-page {
+        flex-direction: column; /* Stack sidebar and content on smaller screens */
+        height: auto;
+        overflow: auto;
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        right: -10%;
+        bottom: -10%;
+        z-index: -1;
+    }
+
+    .sidebar {
+        width: auto;
+        height: auto;
+        position: absolute;
+    }
+
+    .content {
+        padding-top: 70px;
+    }
+}
+
+.add-balance-container {
+    background-color: #ffffff; /* White background for the box */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 300px;
+    max-height: 114px;
+    width: auto;
+    margin-top: -174px;
+    margin-bottom: 20px;
+    margin-left: 440px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+    .input-container input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .input-container button {
+        padding: 10px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .input-container button:hover {
+            background-color: #45a049; /* button hover */
+        }

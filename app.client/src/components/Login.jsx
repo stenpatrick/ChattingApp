@@ -98,7 +98,7 @@ function Login() {
                         <br />
                         <ReCAPTCHA
                             ref={recaptchaRef}
-                            sitekey={process.env.REACT_APP_GOOGLE_API_KEY}
+                            sitekey="6LdQ6EEqAAAAAMxkuuLvX7X-NHCW3Ax0KP_gIKTM"
                             onChange={onCaptchaChange}
                         />
                         <br />

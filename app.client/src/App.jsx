@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Register from './components/Register';
+import MainPage from './components/MainPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
             <Route element={<ProtectedRoutes />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/admin' element={<Admin />} />
+                <Route path='/mainpage' element={<MainPage />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
