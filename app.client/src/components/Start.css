@@ -18,8 +18,9 @@ body {
 }
 
 .hero-img {
-    width: 90%; /* Full width of the container */
-    height: 59em; /* Maintain aspect ratio */
+    width: 100%; /* Full width of the container */
+    height: 100em; /* Maintain aspect ratio */
+    opacity: 0.6; /* Adjust this value between 0 (fully transparent) and 1 (fully opaque) */
 }
 
 .hero-title {
@@ -30,6 +31,7 @@ body {
     color: white; /* Text color for contrast */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
     text-align: center;
+    font-size: 3em; /* Adjust this value to increase or decrease text size */
 }
 
 .home-header {
@@ -48,13 +50,33 @@ body {
     gap: 20px; /* Space between buttons */
 }
 
-.button {
+/* Button Styles */
+.button,
+.contact-button {
     padding: 15px 30px; /* Button size */
-    background-color: #0b273a; /* Button color */
+    background-color: #0b273a; /* Initial button color */
     color: white; /* Button text color */
-    text-decoration: none;
-    border-radius: 5px;
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for background color and scale */
+    font-size: 1em; /* Font size for buttons */
 }
+
+    /* Hover Effect */
+    .button:hover,
+    .contact-button:hover {
+        background-color: #1a4d6b; /* New color on hover */
+        transform: scale(1.15); /* Slightly enlarge the button on hover */
+    }
+
+    /* Disabled State for Buttons */
+    .button:disabled,
+    .contact-button:disabled {
+        background-color: #ccc; /* Gray background when disabled */
+        cursor: not-allowed; /* Change cursor to indicate disabled state */
+    }
 
 /* Contact Header Styles */
 .contact-header {
@@ -62,22 +84,48 @@ body {
     background-color: white;
     color: black;
     display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between text and button */
-    align-items: center; /* Center items vertically */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
 }
 
-.contact-button {
-    padding: 15px 30px; /* Button size */
-    background-color: #0b273a; /* Button color */
-    color: white; /* Button text color */
-    text-decoration: none;
-    border-radius: 5px;
+    .contact-header h1 {
+        font-size: 3em; /* Large heading */
+        margin-bottom: 10px; /* Space below heading */
+    }
+
+/* Contact Section Styles */
+.contact {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin-block: 150px; /* Adjust margin as needed */
 }
 
-.contact-header h1 {
-    font-size: 3em;
+/* Contact Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form elements horizontally */
 }
 
+    .contact-form input,
+    .contact-form textarea {
+        width: calc(100% - 20px);
+        max-width: 400px; /* Limit max width for inputs */
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
 /* About Us, Features, Reviews, Contact Sections */
 .about-us {
     margin-block: 200px;
