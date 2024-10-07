@@ -86,22 +86,22 @@ const Home = () => {
             </section>
 
             {/* Our Past Work Section */}
-            <section className="past-work">
-                <h2>Our Past Work</h2>
-                <div className="past-work-images">
-                    {/* Use imported images here */}
-                    <img src={projectImage1} alt="Project 1" />
-                    <img src={projectImage2} alt="Project 2" />
-                    <img src={projectImage3} alt="Project 3" />
-                </div>
-                {/* New row for additional images */}
-                <div className="past-work-images-row">
-                    {/* Use imported images here */}
-                    <img src={projectImage1} alt="Project 1" />
-                    <img src={projectImage2} alt="Project 2" />
-                    <img src={projectImage3} alt="Project 3" />
-                </div>
-            </section>
+            {/*<section className="past-work">*/}
+            {/*    <h2>Our Past Work</h2>*/}
+            {/*    <div className="past-work-images">*/}
+            {/*        */}{/* Use imported images here */}
+            {/*        <img src={projectImage1} alt="Project 1" />*/}
+            {/*        <img src={projectImage2} alt="Project 2" />*/}
+            {/*        <img src={projectImage3} alt="Project 3" />*/}
+            {/*    </div>*/}
+            {/*    */}{/* New row for additional images */}
+            {/*    <div className="past-work-images-row">*/}
+            {/*        */}{/* Use imported images here */}
+            {/*        <img src={projectImage1} alt="Project 1" />*/}
+            {/*        <img src={projectImage2} alt="Project 2" />*/}
+            {/*        <img src={projectImage3} alt="Project 3" />*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
             {/* Contact Form Section */}
             <section id="contact-form" className="contact">
