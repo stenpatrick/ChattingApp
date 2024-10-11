@@ -19,7 +19,7 @@ body {
 
 .hero-img {
     width: 100%; /* Full width of the container */
-    height: 100em; /* Maintain aspect ratio */
+    height: 65em; /* Maintain aspect ratio */
     opacity: 0.6; /* Adjust this value between 0 (fully transparent) and 1 (fully opaque) */
 }
 
