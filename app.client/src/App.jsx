@@ -1,20 +1,20 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import ProtectedRoutes from './ProtectedRoutes';
 import './App.css';
-import Home from './components/Home';
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Register from './components/Register';
-import Landing from './components/Start'; 
+import StartPage from './components/StartPage';
+import BudgetPage from './components/BudgetPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/'>
-            <Route path='/' element={<Landing />} /> 
+            <Route path='/' element={<StartPage />} />
             <Route element={<ProtectedRoutes />}>
-                <Route path='/home' element={<Home />} />
+                <Route path='/StartPage' element={<StartPage />} />
                 <Route path='/admin' element={<Admin />} />
-                <Route path='/mainpage' element={<MainPage />} />
+                <Route path='/BudgetPage' element={<BudgetPage />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
                         <h1>Not Found</h1>
                     </header>
                     <p>
-                        <a href="/">Back to Home</a>
+                        <a href="/">Back to StartPage</a>
                     </p>
                 </div>
             } />
@@ -57,8 +57,9 @@ function App() {
                 {
                     isLogged ?
                         <span className='item-holder'>
-                            <a href="/home">Home</a>
-                            <a href="/admin">Admin</a>
+                            <a href="/StartPage">StartPage</a>
+                            <a href="/BudgetPage">Budget</a>
+                            <a href="/Account">Admin</a>
                             <span onClick={logout}>Log Out</span>
                         </span> :
                         <span className='item-holder'>

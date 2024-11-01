@@ -1,11 +1,11 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import './MainPage.css';
+import './BudgetPage.css';
 import Sidebar from './Sidebar';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF5733'];
 
-function MainPage() {
+function BudgetPage() {
     const [balance, setBalance] = useState(0);
     const [transactions, setTransactions] = useState([]);
     const [data, setData] = useState([]);
@@ -179,4 +179,4 @@ function MainPage() {
     );
 }
 
-export default MainPage;
+export default BudgetPage;

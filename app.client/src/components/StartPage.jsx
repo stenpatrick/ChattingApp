@@ -1,12 +1,12 @@
-// src/components/Home.jsx
+// src/components/StartPage.jsx
 import React, { useState } from 'react';
-import './Start.css'; // CSS 
+import './StartPage.css'; // CSS 
 import heroImage from '../assets/1.png'; // Hero Image
 import projectImage1 from '../assets/1.png'; // Project Image 1
 import projectImage2 from '../assets/2.png'; // Project Image 2
 import projectImage3 from '../assets/3.png'; // Project Image 3
 
-const Home = () => {
+const StartPage = () => {
     // State variables for form inputs
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ const Home = () => {
     };
 
     return (
-        <div className="home">
+        <div className="startpage">
             {/* Image */}
             <div className="hero-image">
                 <img src={heroImage} alt="Hero" className="hero-img" />
@@ -32,10 +32,10 @@ const Home = () => {
                 </div>
             </div>
 
-            <header className="home-header">
+            <header className="startpage-header">
                 <h1>Save Smart, Live Better</h1>
                 <p>Track your savings, set goals, and achieve financial freedom with ease.</p>
-                <div className="home-buttons">
+                <div className="startpage-buttons">
                     <a href="/login" className="button">Login</a>
                     <a href="/register" className="button">Get Started</a>
                 </div>
@@ -133,7 +133,7 @@ const Home = () => {
             </section>
 
             {/* Footer Section */}
-            <footer className="home-footer">
+            <footer className="startpage-footer">
                 <p>&copy; 2024 Savings App. All rights reserved.</p>
                 {/* Social Media Links */}
                 <div className="social-links">
@@ -146,4 +146,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default StartPage;

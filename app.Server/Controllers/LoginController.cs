@@ -91,8 +91,8 @@ namespace app.Server.Controllers
 					return Ok();
 				}
 
-				[HttpGet("home/{email}"), Authorize]
-				public async Task<ActionResult> HomePage(string email)
+				[HttpGet("StartPage/{email}"), Authorize]
+				public async Task<ActionResult> StartPagePage(string email)
 				{
 						User userInfo = await userManager.FindByEmailAsync(email);
 						if (userInfo == null){

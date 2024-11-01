@@ -14,7 +14,7 @@ function Admin() {
             setPartners(data.trustedPartners);
             console.log("trustedPartners: ", data.trustedPartners);
         }).catch(error => {
-            console.log("Error home page: ", error);
+            console.log("Error StartPage page: ", error);
         });
     }, []);
     return (

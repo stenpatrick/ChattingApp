@@ -12,8 +12,8 @@ using app.Server.Data;
 namespace app.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240906102456_InitialCreate3")]
-    partial class InitialCreate3
+    [Migration("20241101082810_d")]
+    partial class d
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

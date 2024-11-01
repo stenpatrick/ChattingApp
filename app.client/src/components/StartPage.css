@@ -1,4 +1,4 @@
-/* src/components/Start.css */
+/* src/components/StartPage.css */
 
 body {
     font-family: 'Arial', sans-serif; /* Modern font */
@@ -7,7 +7,7 @@ body {
     color: #333; /* Dark text color */
 }
 
-.home {
+.startpage {
     position: relative; /* Set position to relative */
     text-align: center; /* Center text */
 }
@@ -34,17 +34,17 @@ body {
     font-size: 3em; /* Adjust this value to increase or decrease text size */
 }
 
-.home-header {
+.startpage-header {
     padding: 50px 20px; /* Add padding for header */
     background-color: white; /* Header background color */
     color: black; /* Text color in header */
 }
 
-    .home-header h1 {
+    .startpage-header h1 {
         font-size: 3em; /* Large heading */
     }
 
-.home-buttons {
+.startpage-buttons {
     display: flex;
     justify-content: center;
     gap: 20px; /* Space between buttons */
@@ -130,13 +130,16 @@ body {
 .about-us {
     margin-block: 200px;
 }
+
 .features {
-     margin-top: 200px; 
- }
+    margin-top: 200px;
+}
+
 .reviews,
 .contact {
     margin-block: 150px;
 }
+
 .past-work {
     padding: 40px 20px; /* Padding for sections */
 }
@@ -220,7 +223,7 @@ body {
     }
 
 /* Footer Styles */
-.home-footer {
+.startpage-footer {
     margin-top: 40px;
     padding: 20px 0;
     font-size: 0.9em;
