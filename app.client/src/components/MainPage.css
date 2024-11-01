@@ -11,35 +11,6 @@ body {
     height: 100vh; /* Full height to utilize space */
 }
 
-/* Sidebar Styles */
-.sidebar {
-    width: 250px; /* Width of the sidebar when opened */
-    background-color: #ffffff; /* White background for sidebar */
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for size and margin */
-}
-
-.sidebar-collapsed .sidebar {
-    width: 80px; /* Width of the sidebar when collapsed */
-}
-
-nav ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-    nav ul li {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        cursor: pointer;
-    }
-
-        /* Change color on hover */
-        nav ul li:hover {
-            background-color: #f5f5f5; /* Light gray on hover */
-        }
 
 /* Icon Background Circle */
 .icon-background {
@@ -53,20 +24,11 @@ nav ul {
     margin-right: 10px;
 }
 
-.sidebar ul li {
-    transition: opacity 0.3s ease; /* Smooth fade for text */
-}
-
-.hero-image {
-    margin-left: 70px;
-    width: 70px; /* Default size when sidebar is open */
-    transition: width 0.35s ease, margin-left 0.35s ease; /* Smooth transition for size and margin */
-}
-
-.sidebar-collapsed .hero-image {
-    width: 50px; /* Match the size of the .icon-background when sidebar is collapsed */
-    height: 50px;
-    margin-left: 0; /* Remove extra margin when collapsed */
+/* Category Icon Styles */
+.category-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
 }
 
 /* Content Styles */
@@ -170,10 +132,23 @@ nav ul {
     display: flow;
     justify-content: center;
     align-items: center;
+    height: 617px;
 }
 
 .hackbold {
     font-weight: bold;
+}
+
+.category-list {
+    list-style-type: none;
+    font-weight: bold;
+    margin-top: -30px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
 }
 
 /* Responsive Design Adjustments */
