@@ -146,7 +146,7 @@ _TeamCity*
 coverage*.json
 coverage*.xml
 coverage*.info
-
+Migrations/
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml

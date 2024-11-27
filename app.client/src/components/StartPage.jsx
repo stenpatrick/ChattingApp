@@ -37,7 +37,7 @@ const StartPage = () => {
                 <p>Track your savings, set goals, and achieve financial freedom with ease.</p>
                 <div className="startpage-buttons">
                     <a href="/login" className="button">Login</a>
-                    <a href="/register" className="button">Get Started</a>
+                    <a href="/register" className="button">Register</a>
                 </div>
             </header>
 
