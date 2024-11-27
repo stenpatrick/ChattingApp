@@ -13,7 +13,6 @@ const router = createBrowserRouter(
             <Route path='/' element={<StartPage />} />
             <Route element={<ProtectedRoutes />}>
                 <Route path='/StartPage' element={<StartPage />} />
-                <Route path='/admin' element={<Admin />} />
                 <Route path='/BudgetPage' element={<BudgetPage />} />
             </Route>
             <Route path='/login' element={<Login />} />
